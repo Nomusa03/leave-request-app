@@ -1,58 +1,139 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Leave Request Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Project Description
 
-## About Laravel
+The Leave Request Management System is a web application developed using Laravel and PHP. It allows employees to register, log in and manage their leave requests online.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Employees can submit leave requests, view their requests, edit pending requests and delete pending requests.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 2. Technologies Used
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Laravel 13
+- PHP 8.5
+- SQLite Database
+- HTML and CSS
+- Git and GitHub
+- PHPUnit / Laravel Feature Tests
 
-## Learning Laravel
+## 3. Application Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Employee registration
+- Employee login and logout
+- Submit a leave request
+- View a list of personal leave requests
+- View leave request details
+- Edit pending leave requests
+- Delete pending leave requests
+- Form validation
+- Automatic Pending status for new requests
+- Protection so employees can only access their own requests
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 4. Database
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+The application uses SQLite for local development.
 
-## Agentic Development
+The main database table is `leave_requests`, which stores:
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+- User ID
+- Leave type
+- Start date
+- End date
+- Reason
+- Status
+- Created and updated dates
+
+## 5. Requirements
+
+Before running the application, install:
+
+- PHP 8.2 or later
+- Composer
+- Git
+
+## 6. Installation and Setup
+
+### Step 1: Clone the repository
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/Nomusa03/leave-request-app.git
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### Step 2: Open the project folder
 
-## Contributing
+```bash
+cd leave-request-app
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Step 3: Install dependencies
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Step 4: Create the environment file
 
-## Security Vulnerabilities
+For Windows PowerShell:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```powershell
+Copy-Item .env.example .env
+```
 
-## License
+### Step 5: Generate the application key
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan key:generate
+```
+
+### Step 6: Create the SQLite database
+
+Run this in PowerShell:
+
+```powershell
+if (!(Test-Path database/database.sqlite)) {
+    New-Item database/database.sqlite -ItemType File
+}
+```
+
+Make sure `.env` contains:
+
+```env
+DB_CONNECTION=sqlite
+```
+
+### Step 7: Run database migrations
+
+```bash
+php artisan migrate
+```
+
+### Step 8: Start the application
+
+```bash
+php artisan serve
+```
+
+Open the following address in your browser:
+
+http://127.0.0.1:8000
+
+## 7. Running Tests
+
+To run the automated tests, use:
+
+```bash
+php artisan test
+```
+
+The project currently has five leave-request feature tests covering viewing, creating, updating and deleting leave requests, as well as accessing the leave-request list.
+
+## 8. GitHub Repository
+
+https://github.com/Nomusa03/leave-request-app
+
+## 9. Developer
+
+**Name:** Nomusa Mbokazi
+
+**Project:** Leave Request Management System
+
+**Framework:** Laravel
